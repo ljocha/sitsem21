@@ -15,6 +15,7 @@ RUN apt install -y python3-pip git
 RUN pip3 install notebook rise
 RUN pip3 install matplotlib ipympl
 RUN pip3 install scipy
+RUN pip3 install mdtraj
 
 RUN mkdir  -p /usr/local/share/jupyter/nbextensions && cd /usr/local/share/jupyter/nbextensions && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && jupyter nbextension enable vim_binding/vim_binding
 
