@@ -1,6 +1,4 @@
-# docker build -t ljocha/jupytermeta21 .
-
-FROM intel/oneapi-aikit
+FROM intel/oneapi-basekit
 
 MAINTAINER Ales Krenek <ljocha@ics.muni.cz>
 
@@ -8,23 +6,27 @@ USER root
 
 ENV TZ=Europe/Prague
 
-RUN apt update && apt upgrade -y
+#RUN apt update && apt upgrade -y
+RUN apt update 
+RUN apt install -y sassc
+
 #RUN apt install -y python3-pip git
 
 RUN conda install notebook rise
 RUN conda install matplotlib ipympl
 RUN conda install scipy
 
+RUN apt install -y git
 RUN mkdir  -p /usr/local/share/jupyter/nbextensions && cd /usr/local/share/jupyter/nbextensions && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && jupyter nbextension enable vim_binding/vim_binding
 
 RUN mkdir -p /work
 
-RUN apt install -y sassc
 
 COPY ljocha.scss patch-reveal-themes.sh /work/
 
 WORKDIR /work
-RUN sassc -I /usr/local/lib/python3.6/dist-packages/rise/static/reveal.js/css/theme/source ljocha.scss ljocha.css && ./patch-reveal-themes.sh ljocha.css && cp ljocha.css /usr/local/share/jupyter/nbextensions/rise/reveal.js/css/theme
+ARG prefix=/opt/intel/oneapi/intelpython/python3.7/
+RUN sassc -I ${prefix}/share/jupyter/nbextensions/rise/reveal.js/css/theme/source ljocha.scss ljocha.css && ./patch-reveal-themes.sh ljocha.css && cp ljocha.css ${prefix}/share/jupyter/nbextensions/rise/reveal.js/css/theme
 
 WORKDIR /work
 ENV HOME /work
