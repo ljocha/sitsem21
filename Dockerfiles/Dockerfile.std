@@ -34,4 +34,6 @@ ENV HOME /home/jovyan
 RUN mkdir /home/jovyan
 RUN chown -R 1000:1000 /work /home/jovyan
 
+COPY *.ipynb /work/
+
 CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 
