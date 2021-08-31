@@ -31,4 +31,7 @@ RUN sassc -I /usr/local/lib/python3.6/dist-packages/rise/static/reveal.js/css/th
 WORKDIR /work
 ENV HOME /home/jovyan
 
+RUN mkdir /home/jovyan
+RUN chown -R 1000:1000 /work /home/jovyan
+
 CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 
