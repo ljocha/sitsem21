@@ -31,4 +31,4 @@ RUN sassc -I /usr/local/lib/python3.6/dist-packages/rise/static/reveal.js/css/th
 WORKDIR /work
 ENV HOME /work
 
-CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 sitsem21.ipynb
+CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 

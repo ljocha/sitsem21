@@ -16,6 +16,7 @@ RUN conda install notebook rise
 RUN conda install matplotlib ipympl
 RUN conda install scipy
 
+RUN apt update --fix-missing
 RUN apt install -y git
 RUN mkdir  -p /usr/local/share/jupyter/nbextensions && cd /usr/local/share/jupyter/nbextensions && git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding && jupyter nbextension enable vim_binding/vim_binding
 
@@ -31,4 +32,4 @@ RUN sassc -I ${prefix}/share/jupyter/nbextensions/rise/reveal.js/css/theme/sourc
 WORKDIR /work
 ENV HOME /work
 
-CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 sitsem21.ipynb
+CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 

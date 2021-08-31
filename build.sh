@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t ljocha/sitsem21:$1 .
+docker build -f Dockerfile.$1 -t ljocha/sitsem21:$1 .
