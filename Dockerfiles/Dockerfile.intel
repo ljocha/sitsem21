@@ -30,6 +30,5 @@ ARG prefix=/opt/intel/oneapi/intelpython/python3.7/
 RUN sassc -I ${prefix}/share/jupyter/nbextensions/rise/reveal.js/css/theme/source ljocha.scss ljocha.css && ./patch-reveal-themes.sh ljocha.css && cp ljocha.css ${prefix}/share/jupyter/nbextensions/rise/reveal.js/css/theme
 
 WORKDIR /work
-ENV HOME /work
 
 CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 

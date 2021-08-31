@@ -29,6 +29,5 @@ WORKDIR /work
 RUN sassc -I /usr/local/lib/python3.6/dist-packages/rise/static/reveal.js/css/theme/source ljocha.scss ljocha.css && ./patch-reveal-themes.sh ljocha.css && cp ljocha.css /usr/local/share/jupyter/nbextensions/rise/reveal.js/css/theme
 
 WORKDIR /work
-ENV HOME /work
 
 CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 
