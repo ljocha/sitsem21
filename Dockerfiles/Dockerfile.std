@@ -34,7 +34,7 @@ ENV HOME /home/jovyan
 RUN mkdir /home/jovyan
 RUN chown -R 1000:1000 /work /home/jovyan
 
-apt install -y cython3
+RUN apt install -y cython3
 
 COPY *.ipynb pbc3.xtc 1L2Y.pdb /work/
 
