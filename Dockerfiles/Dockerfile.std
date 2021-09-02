@@ -35,6 +35,7 @@ RUN mkdir /home/jovyan
 RUN chown -R 1000:1000 /work /home/jovyan
 
 RUN apt install -y cython3
+RUN pip3 install sklearn
 
 COPY *.ipynb pbc3.xtc 1L2Y.pdb /work/
 
