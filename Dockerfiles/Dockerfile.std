@@ -39,4 +39,5 @@ RUN pip3 install sklearn
 
 COPY *.ipynb pbc3.xtc 1L2Y.pdb /work/
 
-CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port 8888 
+ENV port 8888
+CMD jupyter nbextension enable vim_binding/vim_binding && jupyter notebook --ip 0.0.0.0 --port ${port} 
